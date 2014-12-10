@@ -21,7 +21,7 @@ $(function() {
 				$('section').empty();
 				loadPalette();				
 			}
-		})
+		});
 	}
 
 	function loadPalette() {

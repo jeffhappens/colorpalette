@@ -2,7 +2,7 @@
 
 Generates random color palettes using the Colour Lovers API.
 
-### TODO:
+#### TODO:
 
 1. Add ability to lock a color and generate new palettes that include the locked color.
 

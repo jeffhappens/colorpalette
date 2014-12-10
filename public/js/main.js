@@ -33,7 +33,6 @@ $(function() {
 			}).css('background','#' + v).appendTo('section');
 		});
 		startNum = startNum + 1;
-		console.log(colorArray[startNum]);
 	}
 
 	function init() {

@@ -1,3 +1,3 @@
 ## Color Palette Generator
 
-Generate random color palettes in the browser.
+Generates random color palettes using the Colour Lovers API.

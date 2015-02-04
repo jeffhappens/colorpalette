@@ -83,6 +83,14 @@ body {
   height: 100%;
   width: 100%;
 }
+body {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 section {
   height: 100%;
   width: 100%;
@@ -98,6 +106,9 @@ section .color p {
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
   margin: 0;
+}
+section .color p span {
+  display: none;
 }
 footer {
   position: fixed;

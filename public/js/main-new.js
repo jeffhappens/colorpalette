@@ -37,7 +37,8 @@ $(function() {
 						$this.startNumber = 0;
 					}
 					$('section').empty();
-					$this.getPaletteData();
+					//$this.getPaletteData();
+					$this.loadPalettesOnScreen();
 				}
 			});
 		},

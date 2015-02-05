@@ -44,7 +44,7 @@ $(function() {
 		},
 
 		cyclePalette: function() {
-			$(window).on('keypress', function(e) {
+			$(window).on('keyup', function(e) {
 				$this.startNumber++;
 				if(e.keyCode === 32) {
 					if($this.startNumber === $this.paletteArray.length) {

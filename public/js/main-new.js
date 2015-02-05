@@ -4,6 +4,7 @@ $(function() {
 
 		paletteArray: [],
 		lockedValues: [],
+		customArray: [],
 		startNumber: 0,
 
 		compileUrl: function(arg,cat) {

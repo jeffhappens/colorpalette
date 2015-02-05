@@ -7,6 +7,8 @@ $(function() {
 		customArray: [],
 		startNumber: 0,
 
+		$this: this,
+
 		compileUrl: function(arg,cat) {
 			var baseUrl = 'http://www.colourlovers.com/api/palettes/';
 			var format = '?format=json';
@@ -42,7 +44,6 @@ $(function() {
 		},
 
 		cyclePalette: function() {
-			var $this = this;
 			$(window).on('keypress', function(e) {
 				$this.startNumber++;
 				if(e.keyCode === 32) {
@@ -91,7 +92,6 @@ $(function() {
 		},
 
 		loadHexOnClick: function() {
-			$this = this;
 			$(document).on('click','.color', function() {
 				var hval = $(this).data('hex');
 				$this.lockedValues.length = 0;

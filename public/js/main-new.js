@@ -26,12 +26,9 @@ $(function() {
 
 		loadPalettesOnScreen: function() {
 			$('section').empty();
-			console.log(this.paletteArray.length + ' palettes found.');
 			if(this.paletteArray.length === 0) {
-
 				$('section').append('<p>Nothing found :(</p>');
 				return false;
-
 			}
 			$.each(this.paletteArray[this.startNumber], function(k,v) {
 				$('<div/>', {

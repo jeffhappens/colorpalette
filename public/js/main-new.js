@@ -3,19 +3,19 @@ $(function() {
 	var App = {
 
 		paletteArray: [],
-		startNumber: 0,
 		lockedValues: [],
+		startNumber: 0,
 
 		compileUrl: function(arg,cat) {
 			var baseUrl = 'http://www.colourlovers.com/api/palettes/';
-			var category = 'top';
+			//var category = 'top';
 			var format = '?format=json';
 			var jsonCallback = '&jsonCallback=?';
 			var hex_logic = '&hex_logic=AND';
 			var hex = '&hex=' + arg;
-			var numResults = 50;
+			var numResults = 100;
 			var compiledUrl = baseUrl+				
-				category+
+				cat+
 				format+
 				jsonCallback+
 				hex_logic+
@@ -51,15 +51,6 @@ $(function() {
 			});
 		},
 
-		lockValue: function() {
-			var $this = this;
-			$(document).on('click','.color', function() {
-				$this.lockedValues.push( $(this).data('hex') );
-				$this.getPaletteData();
-				$this.cyclePalette();
-			})
-		},
-
 		getPaletteData: function() {
 			var $this = this;
 			$this.paletteArray.length = 0;
@@ -73,9 +64,15 @@ $(function() {
 				$('section').empty();				
 				$this.loadPalettesOnScreen();
 			});
+		},
+
+		init: function() {
+			this.getPaletteData();
+			this.cyclePalette();		
 		}
-	}	
-	App.getPaletteData();
-	App.cyclePalette();
-	App.lockValue();
+
+	}
+
+	App.init();
+
 });

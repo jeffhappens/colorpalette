@@ -4,4 +4,4 @@ Generates random color palettes using the Colour Lovers API. Can also specify he
 
 Working demo here: http://jeffreymills.me/colorpalette
 
-Still has some bugs.
+Still has bugs.

@@ -73,9 +73,10 @@ $(function() {
 		}
 
 	}
-
 	App.init();
 
+
+	// Will clean up
 	$(window).on('keyup', function(e) {
 		if(e.keyCode === 27) {
 			$('footer').toggleClass('taller');
@@ -83,6 +84,7 @@ $(function() {
 			$('footer form input[type=text]').attr('autofocus','autofocus');
 		}
 	});
+
 	$('footer form').on('submit', function(e) {
 		e.preventDefault();
 		App.lockedValues.length = 0;
@@ -95,7 +97,5 @@ $(function() {
 		var hval = $(this).data('hex');
 		App.lockedValues.length = 0;
 		$('footer input[type=text]').val(hval);
-	})
-
-
+	});
 });

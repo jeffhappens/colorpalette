@@ -1,10 +1,6 @@
 ## Color Palette Generator
 
-Generates random color palettes using the Colour Lovers API.
-
-#### TODO:
-
-1. Add ability to lock a color or colors and generate new palettes based on the selected color(s).
+Generates random color palettes using the Colour Lovers API. Can also specify hex values to only show palettes that match.
 
 
 #### USAGE:

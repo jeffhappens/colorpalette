@@ -78,6 +78,10 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+.form-control,
+.btn {
+  border-radius: 0;
+}
 html,
 body {
   height: 100%;
@@ -115,12 +119,20 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  text-align: center;
 }
 footer p {
   margin: 0;
   text-align: center;
+}
+footer form {
+  padding: 10px 0;
+  display: none;
+}
+footer.taller {
+  height: 110px;
 }
 @media screen and (max-width: 768px) {
   section .color {

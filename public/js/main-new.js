@@ -26,13 +26,20 @@ $(function() {
 
 		loadPalettesOnScreen: function() {
 			$('section').empty();
+			console.log(this.paletteArray.length + ' palettes found.');
+			if(this.paletteArray.length === 0) {
+
+				$('section').append('<p>Nothing found :(</p>');
+				return false;
+
+			}
 			$.each(this.paletteArray[this.startNumber], function(k,v) {
 				$('<div/>', {
 					class: 'color',
 					'data-hex' : v,
 					html: '<p>#' + v + '</p>',
 				}).css({
-					'background' : '#' + v
+					'background' : '#'+v
 				}).appendTo('section');
 			});
 		},
@@ -71,5 +78,27 @@ $(function() {
 	}
 
 	App.init();
+
+	$(window).on('keyup', function(e) {
+		if(e.keyCode === 27) {
+			$('footer').toggleClass('taller');
+			$('footer form').toggle();
+			$('footer form input[type=text]').attr('autofocus','autofocus');
+		}
+	});
+	$('footer form').on('submit', function(e) {
+		e.preventDefault();
+		App.lockedValues.length = 0;
+		App.lockedValues.push( $('input', this).val() );
+		$('footer form input[type=text]').blur();
+		App.getPaletteData();
+	});
+
+	$(document).on('click','.color', function() {
+		var hval = $(this).data('hex');
+		App.lockedValues.length = 0;
+		$('footer input[type=text]').val(hval);
+	})
+
 
 });

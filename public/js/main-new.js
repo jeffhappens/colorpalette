@@ -4,7 +4,7 @@ $(function() {
 
 		paletteArray: [],
 		lockedValues: [],
-		customArray: [],
+		//customArray: [],
 		startNumber: 0,
 
 		$this: this,

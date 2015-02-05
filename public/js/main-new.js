@@ -8,7 +8,6 @@ $(function() {
 
 		compileUrl: function(arg,cat) {
 			var baseUrl = 'http://www.colourlovers.com/api/palettes/';
-			//var category = 'top';
 			var format = '?format=json';
 			var jsonCallback = '&jsonCallback=?';
 			var hex_logic = '&hex_logic=AND';
@@ -25,11 +24,12 @@ $(function() {
 		},
 
 		loadPalettesOnScreen: function() {
+			$('section').empty();
 			$.each(this.paletteArray[this.startNumber], function(k,v) {
 				$('<div/>', {
 					class: 'color',
 					'data-hex' : v,
-					html: '<p>#' + v + ' <span>(Locked)</span></p>',
+					html: '<p>#' + v + '</p>',
 				}).css({
 					'background' : '#' + v
 				}).appendTo('section');
@@ -41,11 +41,10 @@ $(function() {
 			$(window).on('keypress', function(e) {
 				$this.startNumber++;
 				if(e.keyCode === 32) {
+					// Once we reach the end of the array we start over
 					if($this.startNumber === $this.paletteArray.length) {
 						$this.startNumber = 0;
 					}
-					console.log($this.startNumber);
-					$('section').empty();
 					$this.loadPalettesOnScreen();
 				}
 			});
@@ -55,13 +54,10 @@ $(function() {
 			var $this = this;
 			$this.paletteArray.length = 0;
 			$.getJSON( $this.compileUrl($this.lockedValues,'top'), function(data) {
-				console.log( $this.compileUrl($this.lockedValues,'top') );
-				console.log(data.length);
 				$.each(data, function(key,value) {
 					$this.paletteArray.push(value.colors);
 				});
 			}).then(function() {
-				$('section').empty();				
 				$this.loadPalettesOnScreen();
 			});
 		},

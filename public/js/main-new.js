@@ -67,35 +67,46 @@ $(function() {
 			});
 		},
 
+		toggleForm: function() {
+			$footer = $('footer');
+			$(window).on('keyup', function(e) {
+				if(e.keyCode === 27) {
+					$footer.toggleClass('taller');
+					$footer.find('form').toggle();
+					$footer.find('input[type=text]').attr('autofocus','autofocus');
+				}
+			})
+		},
+
+		submitForm: function() {
+			$this = this;
+			$footer = $('footer');
+			$footer.find('form').on('submit', function(e) {
+				e.preventDefault();
+				$this.lockedValues.length = 0;
+				$this.lockedValues.push( $('input[type=text]', this).val() );
+				$(this).find('input[type=text]').blur();
+				$this.getPaletteData();
+			})
+		},
+
+		loadHexOnClick: function() {
+			$this = this;
+			$(document).on('click','.color', function() {
+				var hval = $(this).data('hex');
+				$this.lockedValues.length = 0;
+				$('footer').find('input[type=text]').val(hval);
+
+			})
+		},
+
 		init: function() {
 			this.getPaletteData();
-			this.cyclePalette();		
+			this.cyclePalette();
+			this.toggleForm();
+			this.submitForm();
+			this.loadHexOnClick();
 		}
-
 	}
 	App.init();
-
-
-	// Will clean up
-	$(window).on('keyup', function(e) {
-		if(e.keyCode === 27) {
-			$('footer').toggleClass('taller');
-			$('footer form').toggle();
-			$('footer form input[type=text]').attr('autofocus','autofocus');
-		}
-	});
-
-	$('footer form').on('submit', function(e) {
-		e.preventDefault();
-		App.lockedValues.length = 0;
-		App.lockedValues.push( $('input', this).val() );
-		$('footer form input[type=text]').blur();
-		App.getPaletteData();
-	});
-
-	$(document).on('click','.color', function() {
-		var hval = $(this).data('hex');
-		App.lockedValues.length = 0;
-		$('footer input[type=text]').val(hval);
-	});
 });

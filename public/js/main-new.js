@@ -4,9 +4,7 @@ $(function() {
 
 		paletteArray: [],
 		lockedValues: [],
-		//customArray: [],
 		startNumber: 0,
-
 		$this: this,
 
 		compileUrl: function(arg,cat) {
@@ -29,7 +27,9 @@ $(function() {
 		loadPalettesOnScreen: function() {
 			$('section').empty();
 			if(this.paletteArray.length === 0) {
-				$('section').append('<p>Nothing found :(</p>');
+				$('<p/>', {
+					text: 'Nothing found.'
+				}).appendTo('section');
 				return false;
 			}
 			$.each(this.paletteArray[this.startNumber], function(k,v) {
@@ -47,7 +47,6 @@ $(function() {
 			$(window).on('keypress', function(e) {
 				$this.startNumber++;
 				if(e.keyCode === 32) {
-					// Once we reach the end of the array we start over
 					if($this.startNumber === $this.paletteArray.length) {
 						$this.startNumber = 0;
 					}
@@ -72,7 +71,7 @@ $(function() {
 			$footer = $('footer');
 			$(window).on('keyup', function(e) {
 				if(e.keyCode === 27) {
-					$footer.toggleClass('taller');
+					$footer.toggleClass('expand');
 					$footer.find('form').toggle();
 					$footer.find('input[type=text]').attr('autofocus','autofocus');
 				}
